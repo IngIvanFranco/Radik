@@ -1,0 +1,30 @@
+form{
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    margin: 80px auto;
+    border: 1px #ccc solid;
+    border-radius: 20px;
+}
+
+.input-group{
+    margin: 20px auto;
+}
+
+h3{
+    text-align: center;
+}
+
+h6{
+    margin-bottom: -10px;
+}
+.contbtn{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px auto;
+}
+
+.conarchi li{
+list-style: none;
+
+}

@@ -1,0 +1,38 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">  <strong> RADIK </strong> <i class="bi bi-qr-code-scan"></i> </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-windows"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         
+          
+        </ul>
+       
+        <a class="btn-ligth boton" (click)="unlogin()">
+            <i class="bi bi-x-octagon-fill"></i> Salir
+          </a>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+  <div class="offcanvas offcanvas-start  bg-dark" style="color: white ;" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel"><strong> RADIK </strong> <i class="bi bi-qr-code-scan"></i></h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div  >
+       Estamos siempre de tu lado, por eso te traemos estas opciones:
+      </div>
+      <div class="dropdown mt-3" *ngFor="let cs of creditos">
+        <li> <a routerLink="{{cs.link}}" data-bs-dismiss="offcanvas"><i class="{{cs.icon}}"></i> {{cs.nombre}}</a></li>
+      </div>
+    </div>
+  </div>
+  

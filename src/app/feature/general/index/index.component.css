@@ -1,0 +1,5 @@
+.container{
+    margin: 50px auto;
+    overflow-x: auto;
+    max-width: 90%;
+}

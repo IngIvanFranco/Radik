@@ -1,0 +1,10 @@
+.boton{
+color: white;
+text-decoration: none;
+}
+
+.dropdown a{
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}

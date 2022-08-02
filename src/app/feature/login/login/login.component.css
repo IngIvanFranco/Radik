@@ -1,0 +1,19 @@
+.conten{
+    width: 90%;
+    max-width: 500px;
+    margin: 25px auto;
+    border: 1px solid #008400;
+    padding: 20px;
+    border-radius: 7px;
+    background-color: rgba(255, 255, 255, .15);
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+  backdrop-filter: blur(5px);
+}
+
+
+
+.contimg{
+    display: flex;
+    justify-content: center;
+
+}

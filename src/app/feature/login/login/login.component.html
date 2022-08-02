@@ -1,0 +1,28 @@
+<app-nav-bar></app-nav-bar>
+
+
+<div class="conten">
+  <form [formGroup]="formulariologin" (ngSubmit)="login()">
+    <div class="contimg">
+    <img src="https://www.susolucionsa.com.co/vista/img/banner-seccion-4.3.png"   alt="" width="150px">
+</div>
+<div class="mb-3 row">
+    
+    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email"  class="form-control" id="staticEmail" formControlName="email" >
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword" formControlName="password">
+    </div>
+  </div>
+  
+  <div class="contimg">
+    <button type="submit" [disabled]="formulariologin.invalid" class="btn btn-success">Ingresar</button>
+  </div>
+  
+</form>
+</div>
