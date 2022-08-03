@@ -1,35 +1,91 @@
 <div class="container">
     
 
-    <form  >
+    <form [formGroup]="formularioradicado" (ngSubmit)="crearRegistro()" >
         <h3 class="text-primary "> <i class="bi bi-plus-square-fill"></i> Nuevo Registro</h3>
-        <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text"><i class="bi bi-person-video2"></i></span>
-            <div class="form-floating">
-              <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
-              <label for="floatingInputGroup1">Remitente</label>
-            </div>
+        
+        <div class="form-floating my-3 ">
+          <select class="form-select" id="floatingSelect" formControlName="tipoide" aria-label="Floating label select example">
+              <option selected>Seleccione el tipo de documento </option>
+              <option  value="CC">CC</option>
+              <option  value="CE">CE</option>
+              <option  value="NIT">NIT</option>
+              <option  value="PASAPORTE">PASAPORTE</option>
+                           
+          </select>
+          <label for="floatingSelect">Tipo Identificacion</label>
+          
+
         </div>
 
-            <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text"><i class="bi bi-signpost-2"></i></span>
-            <div class="form-floating">
-                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+        <div class="form-floating my-3 ">
+          <input type="number" class="form-control" formControlName="identificacion" id="floatingInputGroup1" placeholder="Remitente">
+          <label for="floatingInputGroup1">Identificacion Remitente</label>
+        </div>
+
+          
+            <div class="form-floating my-3 ">
+              <input type="text" class="form-control" formControlName="remitente" id="floatingInputGroup1" placeholder="Remitente">
+              <label for="floatingInputGroup1">Remitente</label>
+            </div>
+        
+           
+        
+            <div class="form-floating my-3 ">
+              <input type="number" class="form-control" formControlName="tel" id="floatingInputGroup1" placeholder="Calle 25 n ....">
+              <label for="floatingInputGroup1">Telefono</label>
+            </div>
+
+            <div class="form-floating my-3 ">
+              <input type="email" class="form-control" formControlName="email" id="email" placeholder="Calle 25 n ....">
+              <label for="floatingInputGroup1">Email</label>
+             
+            </div>
+
+            <div class="form-floating my-3 ">
+              <input type="text" class="form-control" formControlName="direccion" id="floatingInputGroup1" placeholder="Calle 25 n ....">
+              <label for="floatingInputGroup1">Direccion</label>
+            </div>
+        
+            <div class="form-floating my-3 ">
+                <select class="form-select" id="floatingSelect" formControlName="ciudad" aria-label="Floating label select example">
                     <option selected>Selecciona la Ciudad </option>
-                  <option value="1">Ibagué</option>
-                  <option value="2">Neiva</option>
-                 
+                    <option *ngFor="let c of citys" value="{{c.departamento}}-{{c.municipio}}">{{c.municipio}}-{{c.departamento}}</option>
+                                 
                 </select>
                 <label for="floatingSelect">Ciudad</label>
               </div>
-          </div>
+        
 
-          <div class="form-floating mb-3">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+          <div class="form-floating my-3">
+            <textarea class="form-control" formControlName="observaciones" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
             <label for="floatingTextarea2">Observaciones</label>
           </div>
 
-          <h6 class="text-primary">Adjuntos</h6>
+          <div *ngIf="!formularioradicado.valid" class="alert alert-danger" role="alert">
+            Faltan datos por ingresar...
+            <ul>
+              
+              <li *ngIf="formularioradicado.controls['tipoide'].hasError('maxlength')" >Tipo de identificacion: selecciona un tipo de identificacion</li>
+              <li *ngIf="formularioradicado.controls['remitente'].hasError('required')" >Nombre del remitente: campo en blanco </li>
+              <li *ngIf="formularioradicado.controls['identificacion'].hasError('required')" >Identificacion del remitente: campo en blanco </li>
+              <li *ngIf="formularioradicado.controls['identificacion'].hasError('maxlength')" >Identificacion: No puedes superar los 10 digitos</li>
+              <li *ngIf="formularioradicado.controls['tel'].hasError('required')" >Telefono del remitente: campo en blanco </li>
+              <li *ngIf="formularioradicado.controls['email'].hasError('email')" >Correo: debes escribir un mail</li>
+              <li *ngIf="formularioradicado.controls['email'].hasError('required')" >Correo: campo en blanco</li>
+              <li *ngIf="formularioradicado.controls['direccion'].hasError('required')" >Direccion del remitente: campo en blanco </li>
+              <li *ngIf="formularioradicado.controls['ciudad'].hasError('required')" >Ciudad del remitente </li>
+              <li *ngIf="formularioradicado.controls['observaciones'].hasError('minlength')" >Las observaciones deben ser superior a 10 caracteres alfanumericos </li>
+              <li *ngIf="formularioradicado.controls['observaciones'].hasError('required')" >Observaciones: campo en blanco </li>
+            </ul>
+          </div>
+      
+          
+          <div *ngIf="formularioradicado.valid" class="alert alert-success" role="alert">
+            Perfecto, llenaste todos los campos
+          </div>
+
+       <!--   <h6 class="text-primary">Adjuntos</h6>
           <div class="input-group input-group-sm ">
             <input type="file" class="form-control"  aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class="btn btn-secondary" type="button" id="button-addon2" (click)="addarchivo()"><i class="bi bi-plus-circle"></i></button>
@@ -40,9 +96,9 @@
                 <li ><i class="bi bi-caret-right-fill text-success"></i> {{ac.nombre}}</li>
             </ul>
           </div>
-
+        -->
           <div class="contbtn">
-          <button type="button" class="btn btn-outline-primary">Registrar</button>
+          <button type="submit" [disabled]="formularioradicado.invalid" class="btn btn-outline-primary">Registrar</button>
           <a routerLink="/Radik/Home" class="btn btn-outline-warning">Cancelar</a>
         </div>
     </form>
