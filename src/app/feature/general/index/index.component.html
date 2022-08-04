@@ -9,32 +9,29 @@
         <th scope="col">Radicado</th>
         <th scope="col">Fecha</th>
         <th scope="col">Remitente</th>
+        <th scope="col">Estado</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
+      <tr *ngFor="let r of radicados|  paginate:{itemsPerPage:5, currentPage: page}   let i = index" >
+        <th scope="row">{{i + 1 }}</th>
+        <td>{{r.id_radicado}}</td>
+        <td>{{r.Fecha | date}}</td>
+        <td>{{r.Remitente | uppercase}}</td>
+        <td>{{r.Estado}}</td>
+        <td align="center"><a href="" class="btn btn-success"><i class="bi bi-eye"></i></a><a href="" class="btn btn-primary"><i class="bi bi-pen-fill"></i></a><a href="" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></a></td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td >Larry the Bird</td>
-        <td > Franco</td>
-        <td>@twitter</td>
-        <td>@mdo</td>
-      </tr>
+      
     </tbody>
   </table>
+
+
 </div>
+
+<pagination-controls  
+(pageChange)="page = $event"
+nextLabel="Siguiente"
+previousLabel="Atras"
+>
+</pagination-controls>

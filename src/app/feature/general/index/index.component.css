@@ -3,3 +3,7 @@
     overflow-x: auto;
     max-width: 90%;
 }
+
+.btn{
+    margin: 2px 5px;
+}

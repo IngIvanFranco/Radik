@@ -3,8 +3,8 @@ Exportamos la ruta para tomar imágenes
 =============================================*/
 export let Path = {
 
-    url: 'http://localhost:4200/assets/'
-   //  url: 'http://54.174.81.71/femseapto/assets/'
+   // url: 'http://localhost:4200/assets/'
+     url: 'http://54.174.81.71/Radik/assets/'
         //url: 'https://invercomes.com.co/assets/'
     }
     
@@ -14,8 +14,8 @@ export let Path = {
     export let Api = {
     
     
-     url: 'http://localhost/bakend_susolucion/'
-     // url: 'http://54.174.81.71/femseapto/bkend/'
+     //url: 'http://localhost/bakend_susolucion/'
+      url: 'http://54.174.81.71/Radik/bk_radik/'
     // url: 'https://invercomes.com.co/apimarket_angular-php/'
     }
     

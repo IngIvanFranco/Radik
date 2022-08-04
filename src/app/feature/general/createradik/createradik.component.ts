@@ -3,6 +3,7 @@ import { RegisterService } from '../servicios/register.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, async } from 'rxjs';
+import { Loading, Report } from 'notiflix';
 
 @Component({
   selector: 'app-createradik',
@@ -29,16 +30,23 @@ formularioradicado: FormGroup
         direccion:['',Validators.required],
         ciudad:['Selecciona la Ciudad',Validators.required],
         observaciones:['',[Validators.required,Validators.minLength(10)]],
+       
 
       }
     )
    }
 
   ngOnInit(): void {
+    Loading.circle()
+   this.traerciudades()
+  }
+
+  traerciudades(){
     this.registerservice.ciudades().subscribe(res=>{
-    this.citys = res
-      
-    })
+      this.citys = res
+      Loading.remove()
+        
+      })
   }
 
   addarchivo(){
@@ -46,13 +54,28 @@ formularioradicado: FormGroup
   }
 
   crearRegistro(){
-console.log(this.formularioradicado.value);
+    Loading.circle()
+    this.registerservice.registrar(this.formularioradicado.value).subscribe((res:any)=>{
+      
+if (res.orden == 0) {
+  Loading.remove()
+  Report.failure(
+    'Radik',
+    `Algo fallo y no se realizo el registro intenta de nuevo mas tarde`,
+    'Okay',
+  )
+}else{
+  Loading.remove()
+  Report.success(
+    'Radik',
+    `Registro realizado con exito`,
+    'Okay',
+  )
 
-    /*
+  this.rutas.navigateByUrl('Radik/Home')
+}
 
-    this.registerservice.registrar(this.formularioradicado.value).subscribe(res=>{
-
-    })*/
+    })
   }
 
 }

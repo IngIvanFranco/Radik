@@ -9,6 +9,7 @@ import { CreateradikComponent } from './createradik/createradik.component';
 import { RegisterService } from './servicios/register.service';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     
   ],
   providers:[HttpClientModule,RegisterService,Validators]

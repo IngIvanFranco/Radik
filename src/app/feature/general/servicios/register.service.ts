@@ -19,4 +19,8 @@ registrar(form:any){
   return this.servicio.post(this.api+'?register',form)
 }
 
+radicados(){
+  return this.servicio.get(this.api+'?radicados')
+}
+
 }
